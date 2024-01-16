@@ -32,9 +32,9 @@ const Header = () => {
                          w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in max-md:mt-8 tallM:mt-4 ${open ? 'top-12' : 'top-[-490px]'}
                         `}>
                               {
-                                    Links.map((link) => {
+                                    Links.map((link, key) => {
                                           return (
-                                                <li className='font-medium md:my-0  text-[#262626] liHover py-1 px-4 font-[Urbanist] leading-[27px]'>
+                                                <li key={key} className='font-medium md:my-0  text-[#262626] liHover py-1 px-4 font-[Urbanist] leading-[27px]'>
                                                       <a href={link.link}>{link.name}</a>
                                                 </li>
                                           )

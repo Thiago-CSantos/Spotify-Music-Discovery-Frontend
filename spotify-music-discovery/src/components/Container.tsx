@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import myImage from './image/Image.svg';
 import './styles/container.css'
 import { Parallax } from 'react-parallax';
 
 const Container = () => {
+      const initialContador = Number(localStorage.getItem('contador')) || 0;
+      const [contador, setContador] = useState(initialContador);
+
+      const atualizaContador = () => {
+            const contadorStorage = contador + 1;
+            setContador(contadorStorage);
+            // Salva no localStorage
+            localStorage.setItem('contador', String(contadorStorage));
+      };
+
+      window.onload = atualizaContador;
+      console.log(contador);
+
 
       // Defina os breakpoints conforme necessário
       const isWideEnough = useMediaQuery({ minWidth: 912 });
@@ -49,10 +62,10 @@ const Container = () => {
                         <div className='w-1/2 justify-start items-start gap-7 inline-flex'>
                               <div className='grow basis-0 px-2 py-1 bg-zinc-900 rounded-xl border border-neutral-800 flex-col justify-start items-start inline-flex'>
                                     <div className='self-stretch text-white text-[20px] font-bold leading-[60px]'>
-                                          200+
+                                          {contador}+
                                     </div>
                                     <div className='self-stretch text-neutral-400 text-sm font-medium font-[Urbanist] leading-[27px]'>
-                                          Happy
+                                          Número Acesso
                                     </div>
                               </div>
                               <div className='grow basis-0 px-2 py-1 bg-zinc-900 rounded-xl border border-neutral-800 flex-col justify-start items-start inline-flex'>

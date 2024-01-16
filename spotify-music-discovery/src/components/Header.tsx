@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import { Bars3BottomRightIcon, BeakerIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import './header.css'
-import myGif from '../svg/icons8-fones-de-ouvido.gif';
+import { useState } from 'react';
+import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import './styles/header.css';
+import myGif from './image/icons8-fones-de-ouvido.gif';
 
 const Header = () => {
       const Links = [
@@ -15,7 +15,7 @@ const Header = () => {
       const [open, setOpen] = useState(false);
 
       return (
-            <div className='shadow-md w-full fixed top-0 left-0'>
+            <div className='shadow-md w-full top-0 left-0'>
                   <div className='md:px-10 py-4 px-7 md:flex justify-between items-center bg-white'>
                         {/* {logo} */}
                         <div className='flex text-2xl cursor-pointer items-center gap-2'>
@@ -28,8 +28,8 @@ const Header = () => {
                         </div>
 
                         {/* nav links */}
-                        <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 bg-white
-                         w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-12' : 'top-[-490px]'}
+                        <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto left-0 bg-white
+                         w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in max-md:mt-8 tallM:mt-4 ${open ? 'top-12' : 'top-[-490px]'}
                         `}>
                               {
                                     Links.map((link) => {

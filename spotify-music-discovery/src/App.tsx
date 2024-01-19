@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Container from './components/Container';
 import Section from './components/Section';
+import Cards from './components/Cards';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <Container />
       <Section />
+      <Cards />
     </div>
   );
 }

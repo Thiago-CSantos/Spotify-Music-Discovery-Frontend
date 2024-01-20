@@ -10,6 +10,9 @@ export default {
         'tall': { 'raw': '(min-width: 912px)' },
         'tallM': {'raw': '(max-width: 767px)'}
       },
+      backgroundImage:{
+        'footer-texture': "url('./src/components/image/wave2.png')",
+      },
     },
     plugins: [],
   }

@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Container from './components/Container';
 import Section from './components/Section';
 import Cards from './components/Cards';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Container />
       <Section />
       <Cards />
+      <Footer/>
     </div>
   );
 }

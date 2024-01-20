@@ -1,22 +1,19 @@
 import React from 'react';
-import Header from './components/Header';
-import Container from './components/Container';
-import Section from './components/Section';
-import Cards from './components/Cards';
-import Footer from './components/Footer';
-import LogoClounds from './components/LogoClouds';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './Home/Home';
+import Teste from './routes/Teste';
+import Error from './routes/Error'
 
 
 function App() {
   return (
-    <div className='App bg-[#1A1A1A]'>
-      <Header />
-      <Container />
-      <Section />
-      <Cards />
-      <LogoClounds />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/testando' element={<Teste/>}/>
+        <Route path='*' element={<Error/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

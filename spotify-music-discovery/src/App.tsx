@@ -4,6 +4,7 @@ import Container from './components/Container';
 import Section from './components/Section';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
+import LogoClounds from './components/LogoClouds';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <Container />
       <Section />
       <Cards />
-      <Footer/>
+      <LogoClounds />
+      <Footer />
     </div>
   );
 }

@@ -26,7 +26,7 @@ const Section = () => {
                                           </div>
                                     </div>
                                     <div className="relative mt-16 h-80 lg:mt-8">
-                                          <img className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src="https://developer.spotify.com/images/documentation/open-access/soa-abstracted-linking-flow.png" alt="App screenshot" width="1824" height="1080"/>
+                                          <img className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10 transition duration-500 ease-in-out transform hover:scale-110" src="https://developer.spotify.com/images/documentation/open-access/soa-abstracted-linking-flow.png" alt="App screenshot" width="1824" height="1080"/>
                                     </div>
                               </div>
                         </div>

@@ -40,7 +40,7 @@ const Header = () => {
                                           )
                                     })
                               }
-                              <button className='btn bg-purple-700 text-white py-1 px-3 md:ml-8 rounded md:static'> Get Started</button>
+                              <button className='btn bg-purple-700 text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 hover:border border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
                         </ul>
                   </div>
             </div>

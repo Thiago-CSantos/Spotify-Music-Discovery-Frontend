@@ -1,9 +1,10 @@
-import Cards from "../components/Cards";
-import Container from "../components/Container";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import LogoClounds from "../components/LogoClouds";
-import Section from "../components/Section";
+import Cards from "../Cards";
+import Container from "../Container";
+import Footer from "../Footer";
+import Header from "../Header";
+import LogoClounds from "../LogoClouds";
+import Section from "../Section";
+
 
 
 export default function Home() {

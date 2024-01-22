@@ -30,11 +30,11 @@ const Agora = () => {
       return (
             <>
                   <Sidebar urlImage={urlImg}/>
-                  <div className='bg-[#e4e9f7] h-screen'>
+                  <div className='bg-[#e4e9f7] h-screen flex justify-center'>
 
-                        <div className=''> adsd
-                              <h1>Agora vai</h1>
-                              <img src={urlImg} alt="imagem do spotify" />
+                        <div className='bg-red-500 w-96 ml-28'>
+                              <h1>Tocando</h1>
+                              <img className='m-auto' src={urlImg} alt="imagem do spotify" />
                         </div>
                   </div>
             </>

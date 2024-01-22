@@ -1,15 +1,15 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import './styles/sidebar.css';
 import myImg from './image/icons8-fones-de-ouvido.gif';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaLink } from 'react-icons/fa';
 
-interface SidebarProps extends HTMLAttributes<HTMLDivElement>{
-      urlImage:string;
+interface SidebarProps extends HTMLAttributes<HTMLDivElement> {
+      urlImage: string;
 }
 
-const Sidebar:React.FC<SidebarProps> = ({urlImage, ...props}) => {
+const Sidebar: React.FC<SidebarProps> = ({ urlImage, ...props }) => {
 
       const [open, setOpen] = useState(true);
 
@@ -17,8 +17,27 @@ const Sidebar:React.FC<SidebarProps> = ({urlImage, ...props}) => {
             setOpen(!open);
       }
 
+      useEffect(() => {
+
+            function handleResize() {
+                  const novaLargura = window.innerWidth;
+                  if (novaLargura <= 740) {
+                        setOpen(false);
+                  }else{
+                        setOpen(true);
+                  }
+            };
+
+            // Adiciona um ouvinte de evento para atualizar a largura da tela quando a janela é redimensionada
+            window.addEventListener('resize', handleResize);
+
+            return () => {
+                  window.removeEventListener('resize', handleResize);
+            };
+      }, []);
+
       return (
-            <nav className={`sidebar ${open ? '' : 'close'}`}>
+            <nav {...props} className={`sidebar ${open ? '' : 'close'}`}>
                   <header>
                         <div className="image-text">
                               <span className='image'>
@@ -26,15 +45,15 @@ const Sidebar:React.FC<SidebarProps> = ({urlImage, ...props}) => {
                               </span>
 
                               <div className="text header-text">
-                                    <span className='name'>Codinblab</span>
-                                    <span className='profession'>Web developer</span>
+                                    <span className='name'>Stats</span>
+                                    <span className='profession'>for Spotify</span>
                               </div>
                         </div>
 
                         <button onClick={clicarSidebar}>
-                              {open?(
+                              {open ? (
                                     <ChevronLeftIcon className='w-6 h-6 flex justify-center items-center rounded-[50%] toggle' />
-                              ):(
+                              ) : (
                                     <ChevronRightIcon className='w-6 h-6 flex justify-center items-center rounded-[50%] toggle' />
                               )}
                         </button>
@@ -44,20 +63,20 @@ const Sidebar:React.FC<SidebarProps> = ({urlImage, ...props}) => {
                               <ul className="menu-links">
                                     <li className="nav-link icon">
                                           <a href="/">
-                                                <IoHomeOutline className='icon'/>
-                                                {open?(
+                                                <IoHomeOutline className='icon' />
+                                                {open ? (
                                                       <span className="text nav-text">Home</span>
-                                                ):(
+                                                ) : (
                                                       <span></span>
                                                 )}
                                           </a>
                                     </li>
                                     <li className="nav-link icon">
                                           <a href={urlImage} target='_blank'>
-                                                <FaLink className='icon '/>
-                                                {open?(
+                                                <FaLink className='icon ' />
+                                                {open ? (
                                                       <span className="text nav-text">Abrir imagem</span>
-                                                ):(
+                                                ) : (
                                                       <span></span>
                                                 )}
                                           </a>

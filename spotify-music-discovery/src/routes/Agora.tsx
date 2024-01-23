@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './styles/agora.css'
 import Sidebar from '../components/Sidebar';
+import CardImg from '../components/CardImg';
 
 const Agora = () => {
       const urlString = useLocation();
@@ -28,16 +29,17 @@ const Agora = () => {
 
 
       return (
-            <>
-                  <Sidebar urlImage={urlImg}/>
-                  <div className='bg-[#e4e9f7] h-screen flex justify-center'>
+            <div className='w-full min-h-screen text-white flex justify-center items-center bg-bg-cardPlayer bg-no-repeat bg-cover'>
+                  <Sidebar urlImage={urlImg} />
+                  <div className='h-screen flex justify-center'>
 
-                        <div className='bg-red-500 w-96 ml-28'>
+                        <div className=' w-96 ml-28'>
                               <h1>Tocando</h1>
-                              <img className='m-auto' src={urlImg} alt="imagem do spotify" />
+                              {/* <img className='m-auto' src={urlImg} alt="imagem do spotify" /> */}
+                              <CardImg image={urlImg} />
                         </div>
                   </div>
-            </>
+            </div>
       );
 };
 

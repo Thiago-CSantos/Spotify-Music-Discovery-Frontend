@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ urlImage, ...props }) => {
       }, []);
 
       return (
-            <nav {...props} className={`sidebar ${open ? '' : 'close'}`}>
+            <nav {...props} className={`sidebar z-10 ${open ? '' : 'close'}`}>
                   <header>
                         <div className="image-text">
                               <span className='image'>

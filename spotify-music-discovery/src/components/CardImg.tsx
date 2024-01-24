@@ -1,13 +1,48 @@
 import { ArrowDownCircleIcon } from '@heroicons/react/24/outline';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/cardImg.css';
 import { MdQueueMusic } from 'react-icons/md';
+import { SiMusicbrainz } from 'react-icons/si';
 
 interface CardImgProps {
+      nomeMusica: string;
+      artistas: any;
       image: string;
+      playlist: string;
+      tracks: string;
+      milessegundos: number;
+      progresso_ms: number;
 }
 
-const CardImg: React.FC<CardImgProps> = ({ image, ...props }) => {
+const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist, tracks, milessegundos, progresso_ms, ...props }) => {
+
+      const [artits, setArtits] = useState<string[]>([]);
+      const [minutos, setMinutos] = useState<string>('');
+      const [progresso, setProgresso] = useState<string>('');
+
+      function converterMsParaMinutos(ms: number) {
+            const minutos = Math.floor(ms / 60000); // 1 minuto = 60000 milissegundos
+            const segundos = Math.floor((ms % 60000) / 1000); // 1 segundo = 1000 milissegundos
+
+            const formatoMinutos = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+            return formatoMinutos;
+      }
+
+      useEffect(() => {
+            const nomesArtistas: string[] = [];
+            for (let i = 0; i < artistas.length; i++) {
+                  nomesArtistas.push(artistas[i].name);
+            };
+            setArtits(nomesArtistas);
+
+            const min: string = converterMsParaMinutos(milessegundos);
+            setMinutos(min);
+
+            const progressMin: string = converterMsParaMinutos(progresso_ms);
+            setProgresso(progressMin);
+
+      }, [artistas, minutos, progresso]);
+
       return (
             <div className='containers'>
                   <div className="shape shape-1"></div>
@@ -17,9 +52,9 @@ const CardImg: React.FC<CardImgProps> = ({ image, ...props }) => {
                   <main>
                         <div className="card">
                               <div className="nav">
-                                    <ArrowDownCircleIcon className='w-7' />
-                                    <span> Now Playing</span>
-                                    <MdQueueMusic className='w-7 h-7'/>
+                                    <a href={tracks} target='_blank'><SiMusicbrainz className='w-7 h-7' /></a>
+                                    <span>Now Playing</span>
+                                    <a href={playlist} target='_blank'><MdQueueMusic className='w-7 h-7' /></a>
                               </div>
 
                               <div className="img">
@@ -27,8 +62,8 @@ const CardImg: React.FC<CardImgProps> = ({ image, ...props }) => {
                               </div>
 
                               <div className="details">
-                                    <p className="title">Nome da Musica</p>
-                                    <p className="artista">Nome do Artista</p>
+                                    <p className="title">{nomeMusica}</p>
+                                    <p className="artista">{artits.join(', ')}</p>
                               </div>
 
                               <div className="progress">
@@ -36,8 +71,8 @@ const CardImg: React.FC<CardImgProps> = ({ image, ...props }) => {
                               </div>
 
                               <div className='timer'>
-                                    <span>00:00</span>
-                                    <span>03:43</span>
+                                    <span>{progresso}</span>
+                                    <span>{minutos}</span>
                               </div>
                         </div>
                   </main>

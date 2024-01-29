@@ -35,7 +35,7 @@ const Header = () => {
                               {
                                     Links.map((links, key) => {
                                           return (
-                                                <li key={key} className='font-medium md:my-0  text-[#262626] liHover py-1 px-4 font-[Urbanist] leading-[27px]'>
+                                                <li key={key} className='font-medium md:my-0  text-[#262626] liHover py-1 px-4 font-[Urbanist] leading-[27px] cursor-pointer'>
                                                       <ScrollLink to={links.link} smooth={true} duration={500} offset={links.off || 0}>
                                                             {links.name}
                                                       </ScrollLink>
@@ -44,7 +44,7 @@ const Header = () => {
                                     })
                               }
                               <ScrollLink to={'cardsStarted'} smooth={true} duration={500} offset={-50}>
-                                    <button className='btn bg-purple-700 text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 hover:border border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
+                                    <button className='btn bg-purple-700 hover:bg-white text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 hover:border border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
                               </ScrollLink>
                         </ul>
                   </div>

@@ -20,7 +20,7 @@ const Section = () => {
                                           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Mais sobre a API do Spotify e sua documentação.</h2>
                                           <p className="mt-6 text-lg leading-8 text-gray-300">A API Web do Spotify permite a criação de aplicativos que podem interagir com o serviço de streaming do Spotify, como recuperar metadados de conteúdo, obter recomendações, criar e gerenciar playlists ou controlar a reprodução.</p>
                                           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                                                <a href="#" className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-violet-400 focus:outline-none focus:ring focus:ring-violet-300">Get started</a>
+                                                <a href="https://developer.spotify.com/documentation/web-api/tutorials/getting-started" target='_blank' className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-violet-400 focus:outline-none focus:ring focus:ring-violet-300">Get started</a>
                                                 <a href="https://developer.spotify.com/documentation/web-api" target='_blank' className="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a>
                                           </div>
                                     </div>

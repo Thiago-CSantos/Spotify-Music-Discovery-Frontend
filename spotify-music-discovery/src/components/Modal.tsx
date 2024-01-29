@@ -20,7 +20,7 @@ const Modal: React.FC<ShowModalProps> = ({ visible, onClose, deviceArrays, ...pr
                   <button onClick={onClose} className='text-red-500 font-bold text-xl'>X</button>
                         <ul className='mt-6'>
                               {deviceArrays.map((item: any, key: any) => (
-                                    <li className='bg-gray-600 px-3' key={key}>{item}</li>
+                                    <li className='bg-gray-600 px-3 hover:bg-gray-950 rounded cursor-pointer' key={key}>{item}</li>
                               ))}
                         </ul>
 

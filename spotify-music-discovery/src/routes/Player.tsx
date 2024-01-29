@@ -27,7 +27,8 @@ const Player = () => {
                   .then(response => {
                         // imagem
                         setUrlImg(response.data.urlImage);
-
+                        console.log(response.data);
+                        
                         // Artistas
                         const arrayArtistas = response.data.dados.item.artists;
                         setArtistas(arrayArtistas);

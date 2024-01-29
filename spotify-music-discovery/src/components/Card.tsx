@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ imgSrc, to, h1, paragrafo, addQueryParam, .
             clickName();
       }, [])
       function clickName() {
-            console.log('clicou');   
+            console.log('clicou');
       }
       return (
             <>

@@ -1,4 +1,3 @@
-import React from 'react';
 import './styles/logoClouds.css';
 
 export default function LogoClounds() {

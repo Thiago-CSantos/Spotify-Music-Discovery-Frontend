@@ -1,5 +1,4 @@
 import React from 'react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 interface ShowModalProps {
       visible: any;

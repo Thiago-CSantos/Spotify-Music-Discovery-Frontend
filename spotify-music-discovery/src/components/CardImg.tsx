@@ -13,7 +13,7 @@ interface CardImgProps {
       progresso_ms: number;
 }
 
-const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist, tracks, milessegundos, progresso_ms, ...props }) => {
+const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist, tracks, milessegundos, progresso_ms }) => {
 
       const [artits, setArtits] = useState<string[]>([]);
       const [minutos, setMinutos] = useState<string>('');
@@ -69,7 +69,7 @@ const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist
                               </div>
 
                               <div className="progress">
-                                    <input type="range" min={0} max={100} value={inputValue}/>
+                                    <input type="range" min={0} max={100} value={inputValue} />
                               </div>
 
                               <div className='timer'>

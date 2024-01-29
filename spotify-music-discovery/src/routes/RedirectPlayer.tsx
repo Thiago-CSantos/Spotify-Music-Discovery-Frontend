@@ -1,13 +1,12 @@
 import React, { HTMLAttributes, useEffect, useState } from 'react';
-import axios from 'axios';
 
 interface Propriedades extends HTMLAttributes<HTMLDivElement> {
       imgSrc: string;
 }
 
 
-const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc, ...props }) => {
-      const [dados, setDados] = useState<any>(null);
+const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc }) => {
+
       // Config para usar o Spotify
       const clientId = 'cab7c6673d954a31828e2f2c616c4c75';
       const redirectUri = 'http://localhost:8080/callback';

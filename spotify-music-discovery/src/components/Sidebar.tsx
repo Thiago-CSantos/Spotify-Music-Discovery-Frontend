@@ -4,26 +4,44 @@ import myImg from './image/icons8-fones-de-ouvido.gif';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaLink } from 'react-icons/fa';
+import { MdDevices } from "react-icons/md";
+import Modal from './Modal';
 
 interface SidebarProps extends HTMLAttributes<HTMLDivElement> {
       urlImage: string;
+      deviceArrays: any;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ urlImage, ...props }) => {
+const Sidebar: React.FC<SidebarProps> = ({ urlImage, deviceArrays, ...props }) => {
 
       const [open, setOpen] = useState(true);
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const [showModal, setShowModal] = useState(false);
 
       function clicarSidebar() {
             setOpen(!open);
       }
 
+      function openModal(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+            e.preventDefault();
+            console.log('clicou no Modal')
+            setIsModalOpen(true);
+            setShowModal(true);
+      }
+
+      function closeModal() {
+            setShowModal(false);
+      }
+
       useEffect(() => {
+
+            // console.log('Paramentro Device: ', deviceArrays);
 
             function handleResize() {
                   const novaLargura = window.innerWidth;
                   if (novaLargura <= 740) {
                         setOpen(false);
-                  }else{
+                  } else {
                         setOpen(true);
                   }
             };
@@ -81,9 +99,25 @@ const Sidebar: React.FC<SidebarProps> = ({ urlImage, ...props }) => {
                                                 )}
                                           </a>
                                     </li>
+                                    <li className="nav-link icon">
+                                          <a href="" onClick={(e) => openModal(e)}>
+                                                <MdDevices className='icon ' />
+                                                {open ? (
+                                                      <div className='text-blac'>
+                                                            <span className="text nav-text">Deciver</span>
+                                                      </div>
+                                                ) : (
+                                                      <span></span>
+                                                )}
+                                          </a>
+                                    </li>
                               </ul>
                         </div>
                   </div>
+                  {/* Exemplo de modal */}
+                  {isModalOpen && (
+                        <Modal visible={showModal} onClose={closeModal} deviceArrays={deviceArrays} />
+                  )}
             </nav>
       );
 };

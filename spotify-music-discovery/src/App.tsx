@@ -1,21 +1,24 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Teste from './routes/RedirectPlayer';
+import RedirectPlayer from './routes/RedirectPlayer';
 import Error from './routes/Error'
-import Agora from './routes/Agora';
+import Agora from './routes/Player';
+import { Provider } from 'react-redux';
+import store from './history/Store';
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/redirectPlayer' element={<Teste imgSrc={''} />} />
-        <Route path='/player' element={<Agora />} />
-        <Route path='*' element={<Error />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/redirectPlayer' element={<RedirectPlayer imgSrc={''} />} />
+          <Route path='/player' element={<Agora />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

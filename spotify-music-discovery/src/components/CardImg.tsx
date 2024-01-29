@@ -1,4 +1,3 @@
-import { ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react';
 import './styles/cardImg.css';
 import { MdQueueMusic } from 'react-icons/md';
@@ -19,6 +18,7 @@ const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist
       const [artits, setArtits] = useState<string[]>([]);
       const [minutos, setMinutos] = useState<string>('');
       const [progresso, setProgresso] = useState<string>('');
+      const [inputValue, setInputValue] = useState<number>(0);
 
       function converterMsParaMinutos(ms: number) {
             const minutos = Math.floor(ms / 60000); // 1 minuto = 60000 milissegundos
@@ -40,6 +40,8 @@ const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist
 
             const progressMin: string = converterMsParaMinutos(progresso_ms);
             setProgresso(progressMin);
+
+            setInputValue((progresso_ms / milessegundos) * 100);
 
       }, [artistas, minutos, progresso]);
 
@@ -67,7 +69,7 @@ const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist
                               </div>
 
                               <div className="progress">
-                                    <input type="range" min={0} max={100} />
+                                    <input type="range" min={0} max={100} value={inputValue}/>
                               </div>
 
                               <div className='timer'>

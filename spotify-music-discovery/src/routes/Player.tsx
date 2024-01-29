@@ -4,8 +4,9 @@ import { useLocation } from 'react-router-dom';
 import './styles/agora.css'
 import Sidebar from '../components/Sidebar';
 import CardImg from '../components/CardImg';
+import { io } from 'socket.io-client';
 
-const Agora = () => {
+const Player = () => {
       const urlString = useLocation();
 
       const [nomeMusica, setNomeMusica] = useState('');
@@ -15,6 +16,7 @@ const Agora = () => {
       const [tracks, setTracks] = useState('');
       const [duration_ms, setDuration_ms] = useState(0);
       const [progresso_ms, setProgresso_ms] = useState(0);
+      const [device, setDevice] = useState<string[]>([]);
 
       useEffect(() => {
 
@@ -23,7 +25,6 @@ const Agora = () => {
 
             axios.get(`http://localhost:8080/player?accessToken=${accessToken}`)
                   .then(response => {
-                        console.log(response.data);
                         // imagem
                         setUrlImg(response.data.urlImage);
 
@@ -46,18 +47,37 @@ const Agora = () => {
                         // Progresso da musica
                         setProgresso_ms(response.data.dados.progress_ms);
 
+
+                        const deviceDados = response.data.dados.device;
+                        // // Converte para um array
+                        const deviceArray = Object.keys(deviceDados).map(key => `${key}: ${deviceDados[key]}`);
+                        setDevice(deviceArray);
+                        // console.log('teste', device);
+
                   })
                   .catch(error => {
                         console.log('erro', error);
                   })
 
+            // WebSocket io
+            const socket = io('http://localhost:8080');
+            socket.emit('select', accessToken);
 
-      }, [urlString.search, urlImg]);
+            socket.on('update', (data) => {
+                  setProgresso_ms(data.progress_ms);
+            });
+            return () => {
+                  socket.disconnect();
+            };
+
+      }, [urlString.search, urlImg, progresso_ms, device]);
+
+      // console.log('Log do player: ', device);
 
 
       return (
             <div className='w-full min-h-screen text-white flex justify-center items-center bg-bg-cardPlayer bg-no-repeat bg-cover'>
-                  <Sidebar urlImage={urlImg} />
+                  <Sidebar urlImage={urlImg} deviceArrays={device} />
                   <div className='h-screen flex justify-center'>
 
                         <div className=' w-96 ml-28'>
@@ -70,4 +90,4 @@ const Agora = () => {
       );
 };
 
-export default Agora;
+export default Player;

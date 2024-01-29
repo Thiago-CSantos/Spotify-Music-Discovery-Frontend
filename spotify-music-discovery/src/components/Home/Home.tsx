@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { Provider } from "react-redux";
+import store from "../../history/Store";
 import Cards from "../Cards";
 import Container from "../Container";
 import Footer from "../Footer";
@@ -9,16 +10,16 @@ import Section from "../Section";
 
 
 export default function Home() {
-      const ref = useRef(null);
-
       return (
             <div className='App bg-[#1A1A1A]'>
-                  <Header />
-                  <Container />
-                  <Section />
-                  <Cards/>
-                  <LogoClounds />
-                  <Footer />
+                  <Provider store={store}>
+                        <Header />
+                        <Container />
+                        <Section />
+                        <Cards />
+                        <LogoClounds />
+                        <Footer />
+                  </Provider>
             </div>
       )
 }

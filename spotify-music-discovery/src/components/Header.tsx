@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import './styles/header.css';
 import myGif from './image/icons8-fones-de-ouvido.gif';

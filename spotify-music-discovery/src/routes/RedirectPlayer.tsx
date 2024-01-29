@@ -8,7 +8,7 @@ interface Propriedades extends HTMLAttributes<HTMLDivElement> {
 
 const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc, ...props }) => {
       const [dados, setDados] = useState<any>(null);
-
+      // Config para usar o Spotify
       const clientId = 'cab7c6673d954a31828e2f2c616c4c75';
       const redirectUri = 'http://localhost:8080/callback';
       const authorizationUrl = 'https://accounts.spotify.com/authorize';
@@ -18,12 +18,12 @@ const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc, ...props }) => {
       useEffect(() => {
             // Inicia a autenticação ao montar o componente
             const authUrl = `${authorizationUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
-            const a = window.location.href = authUrl;
-            console.log(a);
+            // Redireciona a pagina 
+            window.location.replace(authUrl);
 
       }, []);
       return (
-            <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <main className="grid min-h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
                   <div className="text-center">
                         <p className="text-base font-semibold text-indigo-600">307</p>
                         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Estamos te redirecionando para a pagina</h1>
@@ -35,7 +35,7 @@ const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc, ...props }) => {
                               >
                                     Voltar
                               </a>
-                              
+
                         </div>
                   </div>
             </main>

@@ -4,6 +4,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import './styles/header.css';
 import myGif from './image/icons8-fones-de-ouvido.gif';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
       const Links = [
@@ -46,6 +47,9 @@ const Header = () => {
                               <ScrollLink to={'cardsStarted'} smooth={true} duration={500} offset={-50}>
                                     <button className='btn bg-purple-700 hover:bg-white text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 hover:border border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
                               </ScrollLink>
+                              <Link to={'/login'}>
+                                    <button className='btn'>Login</button>
+                              </Link>
                         </ul>
                   </div>
             </div>

@@ -6,6 +6,7 @@ import Agora from './routes/Player';
 import { Provider } from 'react-redux';
 import store from './history/Store';
 import Login from './routes/Login';
+import Cadastrar from './routes/Cadastrar';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-        <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/' element={<Home />} />
           <Route path='/redirectPlayer' element={<RedirectPlayer imgSrc={''} />} />
           <Route path='/player' element={<Agora />} />

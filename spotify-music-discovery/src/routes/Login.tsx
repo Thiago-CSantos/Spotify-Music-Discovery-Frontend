@@ -3,6 +3,7 @@ import './styles/login.css'
 import axios from 'axios';
 
 const Login: React.FC = () => {
+      const apiUrl = import.meta.env.VITE_REACT_APP_NODEJS_API_URL;
 
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
@@ -18,7 +19,7 @@ const Login: React.FC = () => {
             }
 
             try {
-                  const resposta = await axios.post('http://localhost:8080/loginApp', {
+                  const resposta = await axios.post(`${apiUrl}/loginApp`, {
                         email: email,
                         password: password,
                   });

@@ -7,6 +7,7 @@ import CardImg from '../components/CardImg';
 import { io } from 'socket.io-client';
 
 const Player = () => {
+      const apiUrl = import.meta.env.VITE_REACT_APP_NODEJS_API_URL;
       const urlString = useLocation();
 
       const [nomeMusica, setNomeMusica] = useState('');
@@ -23,12 +24,11 @@ const Player = () => {
             const urlParams = new URLSearchParams(urlString.search);
             const accessToken = urlParams.get('accessToken');
 
-            axios.get(`http://localhost:8080/player?accessToken=${accessToken}`)
+            axios.get(`${apiUrl}/player?accessToken=${accessToken}`)
                   .then(response => {
                         // imagem
                         setUrlImg(response.data.urlImage);
-                        console.log(response.data);
-                        
+
                         // Artistas
                         const arrayArtistas = response.data.dados.item.artists;
                         setArtistas(arrayArtistas);

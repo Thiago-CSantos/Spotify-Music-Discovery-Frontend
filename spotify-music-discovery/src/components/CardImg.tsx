@@ -69,7 +69,7 @@ const CardImg: React.FC<CardImgProps> = ({ nomeMusica, artistas, image, playlist
                               </div>
 
                               <div className="progress">
-                                    <input type="range" min={0} max={100} value={inputValue} />
+                                    <input type="range" min={0} max={100} value={inputValue.toString()} />
                               </div>
 
                               <div className='timer'>

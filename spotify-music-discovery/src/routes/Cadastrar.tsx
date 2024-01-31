@@ -3,6 +3,8 @@ import './styles/login.css'
 import axios from 'axios';
 
 const Cadastrar: React.FC = () => {
+      const apiUrl = import.meta.env.VITE_REACT_APP_NODEJS_API_URL || 'default-api-url';
+      console.log('Teste', apiUrl);
 
       const [nome, setNome] = useState('');
       const [email, setEmail] = useState('');
@@ -12,13 +14,13 @@ const Cadastrar: React.FC = () => {
       const handleCadastrar = async (e: any) => {
             e.preventDefault();
 
-            if(nome === '' || email === '' || password === ''){
+            if (nome === '' || email === '' || password === '') {
                   setErro('Por favor, preencha todos os campos.');
                   return;
             }
 
             try {
-                  const resposta = await axios.post('http://localhost:8080/cadastrarApp', {
+                  const resposta = await axios.post(`${apiUrl}/cadastrarApp`, {
                         name: nome,
                         email: email,
                         password: password,

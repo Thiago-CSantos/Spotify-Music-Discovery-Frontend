@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 const RedirectPlayer: React.FC = () => {
 
       // Config para usar o Spotify
-      const clientId = 'cab7c6673d954a31828e2f2c616c4c75';
-      const redirectUri = 'http://localhost:8080/callback';
+      const clientId = import.meta.env.VITE_REACT_APP_CLIENTID;
+      const redirectUri = import.meta.env.VITE_REACT_APP_REDIRECT_URI;
       const authorizationUrl = 'https://accounts.spotify.com/authorize';
       const responseType = 'code';
       const scope = 'app-remote-control streaming user-read-email user-read-private user-library-read user-library-modify user-read-playback-state user-modify-playback-state';

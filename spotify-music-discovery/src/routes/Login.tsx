@@ -12,14 +12,25 @@ const Login: React.FC = () => {
       const handleLogin = async (e: any) => {
             e.preventDefault();
 
+            if (email === '' || password === '') {
+                  setErro('Por favor, preencha todos os campos.');
+                  return;
+            }
+
             try {
                   const resposta = await axios.post('http://localhost:8080/loginApp', {
                         email: email,
                         password: password,
                   });
-
                   console.log('Resposta', resposta.data);
-                  setUser(resposta.data.name);
+                  if (resposta.data.exist === true) {
+                        console.log('exist é true');
+                        window.location.replace('/');
+                  } else if (!user) {
+                        setUser(null);
+                        return;
+                  }
+                  setUser(resposta.data.user.name);
             } catch (error: any) {
                   if (error.response && error.response.status === 401) {
                         setErro('Usuário ou senha inválidos');
@@ -27,46 +38,28 @@ const Login: React.FC = () => {
                         setErro('Erro ao acessar o servidor');
                   }
             }
-
-
       };
-
-      const handleLougout = async (e: any) => {
-            e.preventDefault();
-            setUser(null);
-      }
 
       return (
             <>
                   <div className="login-form-wrap">
-                        {user == null ? (
-                              <div>
-                                    <h2>Login</h2>
-                                    <form action="" method="post" className="login-form">
-                                          <input type="email" name='email' placeholder='E-mail' required onChange={(e) => { setEmail(e.target.value) }} />
-                                          <input type="password" name='password' placeholder='Password' required onChange={(e) => { setPassword(e.target.value) }} />
-                                          <button type="submit" className='bg-[#329ddf] w-full block relative mt-3 mb-8 p-2 text-white text-center font-bold uppercase transition-all ease-linear hover:bg-purple-400'
-                                                onClick={(e) => { handleLogin(e) }}>Login</button>
-                                    </form>
-                                    <button type="button" className='w-full block relative mb-5 p-1 text-left'>
-                                          <a href="/cadastrar"
-                                                className='text-blue-600 decoration-1 underline ml-3 visited:text-blue-800 '>
-                                                Não possui cadastro?
-                                          </a>
-                                    </button>
-                                    <p className='text-red-500'>{erro}</p>
-                              </div>
-                        ) : (
-                              <div>
-                                    <h2>Olá, {user}</h2>
-                                    <button className='bg-[#329ddf] w-full block relative mt-3 mb-8 p-5 text-white text-center font-bold uppercase transition-all ease-linear hover:bg-purple-400' type='button'
-                                          onClick={(e) => { handleLougout(e) }}>Logout</button>
-                              </div>
-                        )
-                        }
-
+                        <div>
+                              <h2 className='border-b-2 border-[#1db954] mb-2 pb-1'>Login</h2>
+                              <form action="" method="post" className="login-form">
+                                    <input type="email" name='email' placeholder='E-mail' required onChange={(e) => { setEmail(e.target.value) }} />
+                                    <input type="password" name='password' placeholder='Password' required onChange={(e) => { setPassword(e.target.value) }} />
+                                    <button type="submit" className='bg-[#1DB954] w-full block relative mt-3 mb-1 p-2 text-white text-center font-bold uppercase transition-all ease-linear hover:bg-transparent hover:text-black hover:border border'
+                                          onClick={(e) => { handleLogin(e) }}>Login</button>
+                              </form>
+                              <button type="button" className='w-full block relative mb-0 p-1 text-left'>
+                                    <a href="/cadastrar"
+                                          className='text-blue-600 decoration-1 underline ml-3 visited:text-blue-800 '>
+                                          Não possui cadastro?
+                                    </a>
+                              </button>
+                              <p className='text-red-500'>{erro}</p>
+                        </div>
                   </div>
-
             </>
       );
 };

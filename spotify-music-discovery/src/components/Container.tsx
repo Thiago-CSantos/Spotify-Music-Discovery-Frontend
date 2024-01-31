@@ -18,8 +18,6 @@ const Container = () => {
       };
 
       window.onload = atualizaContador;
-      console.log(contador);
-
 
       // Defina os breakpoints conforme necessário
       const isWideEnough = useMediaQuery({ minWidth: 912 });

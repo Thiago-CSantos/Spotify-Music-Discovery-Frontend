@@ -17,7 +17,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/' element={<Home />} />
-          <Route path='/redirectPlayer' element={<RedirectPlayer imgSrc={''} />} />
+          <Route path='/redirectPlayer' element={<RedirectPlayer />} />
           <Route path='/player' element={<Agora />} />
           <Route path='*' element={<Error />} />
         </Routes>

@@ -45,10 +45,10 @@ const Header = () => {
                                     })
                               }
                               <ScrollLink to={'cardsStarted'} smooth={true} duration={500} offset={-50}>
-                                    <button className='btn bg-purple-700 hover:bg-white text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 hover:border border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
+                                    <button className='btn bg-purple-700 hover:bg-white text-white py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 border hover:border hover:border-neutral-800 hover:text-[#262626] md:static'> Get Started</button>
                               </ScrollLink>
                               <Link to={'/login'}>
-                                    <button className='btn'>Login</button>
+                                    <button className='btn bg-transparent hover:bg-purple-700 text-[#262626] py-1 px-3 md:ml-8 rounded hover:bg-gray-2 00 border border-neutral-800 hover:border hover:border-none hover:text-white md:static'>Login</button>
                               </Link>
                         </ul>
                   </div>

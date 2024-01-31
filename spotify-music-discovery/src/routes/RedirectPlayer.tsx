@@ -1,11 +1,7 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
-
-interface Propriedades extends HTMLAttributes<HTMLDivElement> {
-      imgSrc: string;
-}
+import React, { useEffect } from 'react';
 
 
-const RedirectPlayer: React.FC<Propriedades> = ({ imgSrc }) => {
+const RedirectPlayer: React.FC = () => {
 
       // Config para usar o Spotify
       const clientId = 'cab7c6673d954a31828e2f2c616c4c75';
